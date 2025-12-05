@@ -9,7 +9,7 @@ It is configured for deployment to Streamlit Community Cloud.
    ```bash
    pip install -r requirements.txt
    ```
-2. Launch Streamlit (default AI trader):
+2. Launch Streamlit:
    ```bash
    streamlit run streamlit_app.py
    ```
@@ -59,3 +59,5 @@ codespace and you can publish the branch later, it simply means your work is
 local to this temporary cloud environment. Nothing is pushed to GitHub until
 you choose **Publish Branch** (or delete the codespace to discard it). The
 Streamlit app and all changes you make here stay private unless you publish.
+The main app logic lives in `notebooks/AItradingDashboard.py` and is executed via
+`streamlit_app.py` so Community Cloud can use a simple entrypoint.

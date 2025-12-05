@@ -1,14 +1,11 @@
 """Streamlit Trader V2 app using Yahoo Finance data."""
 import datetime as dt
 from functools import lru_cache
-import importlib
-import importlib.util
-import subprocess
-import sys
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+import yfinance as yf
 
 st.set_page_config(page_title="Trader V2", page_icon="📈", layout="wide")
 
@@ -19,34 +16,7 @@ def _default_dates():
     return start, today
 
 
-_yf_module = None
-
-
-def _ensure_yfinance():
-    """Load yfinance with a clear message if the dependency is missing."""
-    global _yf_module
-    if _yf_module is None:
-        if importlib.util.find_spec("yfinance") is None:
-            with st.spinner("Installing missing dependency: yfinance"):
-                result = subprocess.run(
-                    [sys.executable, "-m", "pip", "install", "--upgrade", "yfinance"],
-                    capture_output=True,
-                    text=True,
-                )
-            if result.returncode != 0:
-                st.error(
-                    "Could not install yfinance. "
-                    "Try rebooting the app in Streamlit Community Cloud so it reinstalls dependencies.\n\n"
-                    f"pip stdout:\n{result.stdout}\n\n"
-                    f"pip stderr:\n{result.stderr}"
-                )
-                st.stop()
-        _yf_module = importlib.import_module("yfinance")
-    return _yf_module
-
-
 def _fetch_data(ticker: str, start: dt.date, end: dt.date, interval: str) -> pd.DataFrame:
-    yf = _ensure_yfinance()
     history = yf.Ticker(ticker).history(start=start, end=end + dt.timedelta(days=1), interval=interval)
     history.index = history.index.tz_localize(None)
     return history
