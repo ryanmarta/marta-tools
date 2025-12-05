@@ -9,7 +9,7 @@ It is configured for deployment to Streamlit Community Cloud.
    ```bash
    pip install -r requirements.txt
    ```
-2. Launch Streamlit (default AI trader):
+2. Launch Streamlit:
    ```bash
    streamlit run streamlit_app.py
    ```
@@ -28,25 +28,5 @@ executes the same Trader V2 app.
 
 The main app logic lives in `notebooks/` and is executed via `streamlit_app.py`
 so Community Cloud can use a simple entrypoint.
-
-## Streamlit Community Cloud startup timing
-
-Streamlit Community Cloud may spend a minute or two provisioning a machine and
-installing dependencies before your app responds. During that window the logs
-show steps like "Provisioning machine", "Processing dependencies", and the
-`uv pip install` summary. If the log output stalls for 10+ minutes or ends with
-an error, select **Rerun** in the Community Cloud UI to restart the build; no
-code changes are required unless the log explicitly reports a failure.
-
-### "ModuleNotFoundError: No module named 'yfinance'"
-
-`yfinance` is listed in `requirements.txt`, so a fresh Streamlit deployment
-should install it automatically. If you see this error:
-
-- Reboot the app in Community Cloud to trigger a clean reinstall of
-  dependencies.
-- If you recently merged changes, ensure the deployment is pointing at the
-  latest commit on `main` so it sees the updated requirements.
-
-The app now surfaces a clearer message when `yfinance` is missing so you know
-the failure is coming from dependency installation rather than the app logic.
+The main app logic lives in `notebooks/AItradingDashboard.py` and is executed via
+`streamlit_app.py` so Community Cloud can use a simple entrypoint.
