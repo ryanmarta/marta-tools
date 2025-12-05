@@ -51,3 +51,11 @@ runtime and surface the pip output if that fails. If you see this error:
 
 The app now surfaces a clearer message when `yfinance` is missing so you know
 the failure is coming from dependency installation rather than the app logic.
+
+## About this Codespace notice
+
+If you see the GitHub message saying everything is contained in this
+codespace and you can publish the branch later, it simply means your work is
+local to this temporary cloud environment. Nothing is pushed to GitHub until
+you choose **Publish Branch** (or delete the codespace to discard it). The
+Streamlit app and all changes you make here stay private unless you publish.
