@@ -9,7 +9,7 @@ It is configured for deployment to Streamlit Community Cloud.
    ```bash
    pip install -r requirements.txt
    ```
-2. Launch Streamlit (default AI trader):
+2. Launch Streamlit:
    ```bash
    streamlit run streamlit_app.py
    ```
@@ -28,3 +28,5 @@ executes the same Trader V2 app.
 
 The main app logic lives in `notebooks/` and is executed via `streamlit_app.py`
 so Community Cloud can use a simple entrypoint.
+The main app logic lives in `notebooks/AItradingDashboard.py` and is executed via
+`streamlit_app.py` so Community Cloud can use a simple entrypoint.
